@@ -1,0 +1,7 @@
+
+<aluno>
+  <nome>Maria Silva</nome>
+  <idade>19</idade>
+  <curso>Informática para Internet</curso>
+  <ativo>true</ativo>
+</aluno>

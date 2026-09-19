@@ -1,0 +1,8 @@
+{
+    "nome": "Maria Silva",
+    "endereco": {
+      "rua": "Rua das Palmeiras",
+      "numero": 120,
+      "cidade": "Joinville"
+    }
+}
