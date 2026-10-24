@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon - Versão Elaborada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .card h1 {
+            color: #333333;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .sprite {
+            width: 120px;
+            height: 120px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .info-tag {
+            background-color: #ee1515;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .data-label {
+            color: #666666;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .data-value {
+            font-weight: bold;
+            color: #222222;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img id="poke-sprite" src="" alt="Sprite" class="sprite">
+        <h1 id="poke-nome">Buscando...</h1>
+        <div class="info-tag" id="poke-tipo">Aguarde</div>
+        
+        <p class="data-label">Número na Pokédex:</p>
+        <p class="data-value">#<span id="poke-id">---</span></p>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let pokemonId;
+        let pokemonNome;
+        let pokemonTipo;
+        let pokemonUrlSprite;
+
+        fetch('https://poke-base.onrender.com/pokemons/1')
+            .then(response => response.json())
+            .then(data => {
+                pokemonId = data.id;
+                pokemonNome = data.nome; 
+                pokemonTipo = tipo_primario;
+                pokemonUrlSprite = data.url_sprite;
+
+                // Colocando os resultados das variáveis nas tags de texto e imagem do HTML
+                document.getElementById('poke-id').innerText = pokemonId;
+                document.getElementById('poke-nome').innerText = pokemonNome;
+                document.getElementById('poke-tipo').innerText = pokemonTipo;
+                document.getElementById('poke-sprite').src = pokemonUrlSprite;
+            })
+            .catch(error => console.error("Erro ao buscar os dados da API: ", error));
+    </script>
+</body>
+</html>

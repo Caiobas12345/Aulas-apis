@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon - Versão Simples</title>
+</head>
+<body>
+    <h1>Detalhes do Pokémon</h1>
+    
+    <img id="poke-sprite" src="" alt="Imagem do Pokémon" width="150">
+    <p><strong>ID:</strong> <span id="poke-id">Carregando...</span></p>
+    <p><strong>Nome:</strong> <span id="poke-nome">Carregando...</span></p>
+    <p><strong>Tipo:</strong> <span id="poke-tipo">Carregando...</span></p>
+
+
+
+    </strong>
+
+    <script>
+        // Variáveis globais
+        let pokemonId;
+        let pokemonNome;
+        let pokemonTipo;
+        let pokemonUrlSprite;
+
+        fetch('https://poke-base.onrender.com/pokemons/8')
+            .then(response => response.json())
+            .then(data => {
+                pokemonId = data.id;
+                pokemonNome = data.nome; 
+                pokemonTipo =tipo_primario; 
+              pokemonUrlSprite = data.pokemonUrlSprite
+
+
+                // Colocando os resultados das variáveis nas tags de texto e imagem do HTML
+                document.getElementById('poke-id').innerText = pokemonId;
+                document.getElementById('poke-nome').innerText = pokemonNome;
+                document.getElementById('poke-tipo').innerText = pokemonTipo;
+                document.getElementById('poke-sprite').src = pokemonUrlSprite;
+            })
+            .catch(error => console.error("Erro ao buscar os dados da API: ", error));
+    </script>
+</body>
+</html>
